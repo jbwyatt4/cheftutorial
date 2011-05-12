@@ -1,0 +1,3 @@
+.vagrant
+src/config.py
+src/prepared.txt

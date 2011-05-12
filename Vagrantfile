@@ -35,7 +35,9 @@ Vagrant::Config.run do |config|
   #   chef.add_role "web"
   #
   #   # You may also specify custom JSON attributes:
-  #   chef.json.merge!({ :mysql_password => "foo" })
+    chef.json.merge!({ :app_user => "vagrant",
+                       :home_folder => "/home/vagrant/",
+                       :source_folder => "/home/vagrant/cheftutorial/" })
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,

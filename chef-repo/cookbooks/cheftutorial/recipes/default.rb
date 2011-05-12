@@ -11,31 +11,31 @@ end
 # install requirements
 
 execute "install_requirements" do
-    cwd "/home/vagrant/"
+    cwd node[:home_folder]
     user "root"
-    command "pip install -r /home/vagrant/cheftutorial/src/requirements.txt"
+    command "pip install -r #{node[:source_folder]}src/requirements.txt"
 end
 
 # write a config
 
-file "/home/vagrant/cheftutorial/src/config.py" do
+file "#{node[:source_folder]}src/config.py" do
     content "halo = True"
-    owner "vagrant"
-    group "vagrant"
+    owner node[:app_user]
+    group node[:app_user]
 end
 
 # run preparation
 
 execute "prepare_things" do
-    cwd "/home/vagrant/cheftutorial/src/"
-    user "vagrant"
+    cwd "#{node[:source_folder]}src/"
+    user node[:app_user]
     command "python prepare.py"
 end
 
 # test
 
 execute "coolproject_hopeitruns" do
-    cwd "/home/vagrant/cheftutorial/src/"
-    user "vagrant"
+    cwd "#{node[:source_folder]}src/"
+    user node[:app_user]
     command "python coolproject.py"
 end

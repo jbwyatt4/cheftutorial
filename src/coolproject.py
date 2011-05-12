@@ -1,6 +1,6 @@
 import django
 
-import .config as config
+import config
 
 if not open('prepared.txt').read().strip() == 'cool':
     raise Exception('Everything is bad and corrupt and total server fault')
